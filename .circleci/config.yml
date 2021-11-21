@@ -9,19 +9,48 @@ executors:
       - image: cimg/base:stable 
 
 jobs:
-  example-job:
+  install:
     executor: node
     steps:
       - node/install:
           lts: false 
           node-version: '16.11' 
-          npm-version: '8.1.3' 
+          npm-version: '8.1.3'
+
+  test: 
+    executor: node
+    steps:
+      - checkout
+      - run:
+          name: Test
+          command: npm run test
+
+  build:
+    executor: node
+    steps:
+      - checkout
+      - run:
+          name: Build
+          command: npm run build
+
+  release:
+    executor: node
+    steps:
+      - checkout
+      - run:
+          name: Release
+          command: npm run release
+    
 
 workflows:
   example-workflow:
     jobs:
-      - example-job
-      - node/test
-      - node/run:
-          npm-run: build
-        
+      - install
+      - test
+      - build
+      - release:
+          requires:
+            - install
+            - test
+            - build
+      
