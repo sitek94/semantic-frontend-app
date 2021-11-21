@@ -56,7 +56,7 @@ jobs:
     
 
 workflows:
-  example-workflow:
+  release:
     jobs:
       - install
       - test:
