@@ -25,6 +25,7 @@ jobs:
           lts: false 
           node-version: '16.11' 
           npm-version: '8.1.3'
+      - node/install-packages
 
   test: 
     executor: node
