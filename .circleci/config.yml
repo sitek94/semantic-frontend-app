@@ -46,8 +46,12 @@ workflows:
   example-workflow:
     jobs:
       - install
-      - test
-      - build
+      - test:
+          requires:
+            - install
+      - build:
+          requires:
+            - install
       - release:
           requires:
             - install
