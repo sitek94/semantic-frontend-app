@@ -11,11 +11,17 @@
     "release": "semantic-release"
   },
   "devDependencies": {
+    "cz-conventional-changelog": "^3.3.0",
     "semantic-release": "^18.0.0",
     "vite": "^2.6.4"
   },
   "repository": {
     "type": "git",
     "url": "git@github.com:sitek94/semantic-frontend-app.git"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
